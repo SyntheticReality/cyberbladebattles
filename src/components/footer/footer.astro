@@ -1,0 +1,95 @@
+---
+import {Image} from 'astro:assets';
+import SocialLink from "../footer/social-link.astro";
+
+
+const navLinks = [
+    {
+        href: '/',
+        label: 'Home'
+    },
+    {
+        href: '/faq',
+        label: 'FAQ'
+    },
+    {
+        href: '/lore',
+        label: 'Lore'
+    },
+    {
+        href: '/terms',
+        label: 'Terms and Conditions'
+    },
+    {
+        href: '/privacy',
+        label: 'Privacy Policy'
+    },
+    {
+        href: '/cookies',
+        label: 'Cookies Policy'
+    },
+];
+
+const socialLinks = [
+    {
+        href: 'https://discord.gg',
+        icon: 'pi pi-discord'
+    },
+    {
+        href: 'https://www.tiktok.com',
+        icon: 'pi pi-tiktok'
+    },
+    {
+        href: 'https://www.youtube.com',
+        icon: 'pi pi-youtube'
+    },
+    {
+        href: 'https://x.com',
+        icon: 'pi pi-twitter'
+    },
+]
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-white py-10 text-black">
+    <div class="mx-auto max-w-3xl space-y-8 px-5">
+        <div class="grid md:grid-cols-2 gap-5">
+            <div class="md:border-r-2 md:border-black">
+                <ul>
+                    {
+                        navLinks.map((link) => (
+                                <li>
+                                    <a href={link.href} class="text-xl hover:underline">
+                                        {link.label}
+                                    </a>
+                                </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <div class="flex flex-col justify-between items-center md:items-start gap-4">
+                <ul class="flex justify-start items-center gap-2">
+                    {
+                        socialLinks.map((link) => (
+                                <li>
+                                    <SocialLink {...link}/>
+                                </li>
+                        ))
+                    }
+                </ul>
+
+                <Image src="/images/rating.webp" alt="Logo" width={200} height={79}/>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center gap-4">
+            <span class="text-center text-md">
+                © {currentYear} Cyberblade Battles by Osyrys. All rights reserved.
+            </span>
+
+            <Image src="/images/logo-black.svg" alt="Logo" width={115} height={28}/>
+        </div>
+    </div>
+</footer>

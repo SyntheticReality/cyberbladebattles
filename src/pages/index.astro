@@ -1,11 +1,96 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro"
+import {Button} from "../components/ui/button";
+import {cn} from "@/lib/utils";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const data = [
+    {
+        title: '⚔️ Dynamic Combat',
+        description: 'Whether you’re slashing with your cyberblade, blasting from range, or flying through the air with dashes, combat is fast, fluid, and unforgiving.',
+        image: '/images/asset-1.webp'
+    },
+    {
+        title: '🌃 Iconic Hangouts',
+        description: 'Chill between battles at the skybar, the iconic rooftop lounge overlooking the city of Osyrys. Celebrate victories, strategize with friends, or just vibe.',
+        image: '/images/asset-2.webp'
+    },
+    {
+        title: '🔥 Flex Your Style',
+        description: 'Fully personalize your combat unit, equip epic armors, unique cyberblades, limited hats, and much more. Stand out as the ultimate cyber-warrior.',
+        image: '/images/asset-3.webp'
+    },
+]
 ---
+<Layout title="Home">
+    <section class="pb-12 lg:pb-16">
+        <div>
+            <img class="mx-auto" src="/images/hero-bg.webp" alt="Hero background">
+        </div>
 
-<Layout>
-	<Welcome />
+        <div class="px-5 mt-4 space-y-8 lg:mt-12 lg:space-y-10">
+            <h1 class="text-center text-2xl md:text-3xl lg:text-4xl">
+                ※ Fast, brutal, cyberpunk VR warfare ※
+            </h1>
+
+            <div class="flex justify-center">
+                <Button variant="hero" class="md:h-20 h-16 md:text-3xl text-xl md:px-12 px-10 cursor-pointer">
+                    <div class="flex flex-col gap-1 justify-center items-center">
+                        Free to play
+                        <img class="max-w-24" src="/images/meta-quest.webp" alt="Meta Quest Logo">
+                    </div>
+                </Button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-5">
+            <iframe
+                    class="w-fit md:w-full mx-auto aspect-video"
+                    src="https://www.youtube.com/embed/Orq-9EnIA30"
+                    frame-border="0"
+                    allow="accelerometer;"
+            />
+        </div>
+    </section>
+
+    <section class="py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-5">
+            <div class="space-y-8 md:space-y-16 xl:space-y-20">
+                {
+                    data.map((item, index) => (
+                            <div class="md:even:flex-row-reverse flex justify-start flex-col md:flex-row items-center w-full gap-12 lg:gap-16 text-start even:text-end group">
+                                <div
+                                        class={
+                                            cn('max-w-[300px] xl:max-w-full',
+                                                index === 0 && 'shadow-[10px_10px_0_0_#ffffff]',
+                                                index === 1 && 'shadow-[-10px_-10px_0_0_#ffffff]',
+                                                index === 2 && 'shadow-[10px_-10px_0_0_#ffffff]',
+                                            )
+                                        }
+                                >
+                                    <img src={item.image} alt={item.title}/>
+                                </div>
+
+                                <div class="space-y-4 xl:space-y-8">
+                                    <h2 class="text-xl md:text-2xl lg:text-4xl xl:text-5xl">
+                                        {item.title}
+                                    </h2>
+
+                                    <p class="md:text-lg lg:text-xl max-w-[50ch] xl:text-2xl">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <section class="pt-12 pb-24 lg:pt-16 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-5">
+            <p class="text-center text-2xl md:text-3xl lg:text-4xl">※ Free‑to‑Play, Skill‑to‑Win ※</p>
+        </div>
+    </section>
 </Layout>

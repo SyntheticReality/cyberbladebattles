@@ -1,0 +1,91 @@
+---
+import Layout from "@/layouts/Layout.astro"
+
+const data = [
+    {
+        title: '🤖 Technology',
+        list: [
+            'Combat Units',
+            'Cyberblades',
+        ]
+    },
+    {
+        title: '🌃 Locations',
+        list: [
+            'Osyrys',
+            'Cyberdome',
+            'Minnie’s Skybar',
+        ]
+    },
+    {
+        title: '👥️ Organizations',
+        list: [
+            'Red Ciphers',
+            'Skull & Bones',
+            'Wolf’s Head',
+            'Scroll and Key',
+            'Jin Corporation',
+            'Andromeda',
+            'Syry Technologies',
+            'Automatics',
+        ]
+    },
+
+    {
+        title: '🎭 Characters',
+        list: [
+            'Minnie',
+            'Rastafá',
+            'Pantera',
+            'Nova',
+        ]
+    },
+    {
+        title: '⚔️ Jobs',
+        list: [
+            'Cyberblade Runner',
+            'Netrunner',
+        ]
+    },
+
+]
+---
+<Layout title="Lore">
+    <section class="py-12 lg:py-16">
+        <div class="max-w-2xl mx-auto px-5 space-y-8 lg:space-y-12">
+            <div class="text-center space-y-1">
+                <h1 class="text-3xl md:text-4xl lg:text-6xl xl:text-7xl">
+                    Lore
+                </h1>
+
+                <p class="text-lg md:text-xl lg:text-2xl xl:text-3xl">
+                    Get to know the world of Cyberblade
+                </p>
+            </div>
+
+            <div>
+                <ul class="space-y-8 lg:space-y-12">
+                    {
+                        data.map((item, index) => (
+                                <li>
+                                    <h2 class="text-2xl lg:text-4xl">
+                                        {item.title}
+                                    </h2>
+
+                                    <ul class="list-disc list-inside mt-2 ps-4">
+                                        {
+                                            item.list.map((listItem, listIndex) => (
+                                                    <li class="text-lg lg:text-xl">
+                                                        {listItem}
+                                                    </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+</Layout>

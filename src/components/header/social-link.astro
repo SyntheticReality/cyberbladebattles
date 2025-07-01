@@ -1,0 +1,21 @@
+---
+import {cn} from "../../lib/utils";
+interface Props {
+    href: string;
+    icon: string;
+}
+
+const {href, icon} = Astro.props;
+---
+
+<a
+        href={href}
+        target="_blank"
+        class="size-7 flex justify-center items-center bg-brand-primary hover:bg-brand-primary/80"
+>
+    <i
+            class={cn('text-black text-lg',
+                icon
+            )}
+    ></i>
+</a>

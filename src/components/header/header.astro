@@ -1,0 +1,94 @@
+---
+import {Image} from 'astro:assets';
+import NavLink from './nav-link.astro';
+import SocialLink from './social-link.astro';
+import Sidebar from './Sidebar.vue'
+
+const navLinks = [
+    {
+        href: '/',
+        label: 'Home'
+    },
+    {
+        href: '/faq',
+        label: 'FAQ'
+    },
+    {
+        href: '/lore',
+        label: 'Lore'
+    }
+];
+
+const socialLinks = [
+    {
+        href: 'https://discord.gg',
+        icon: 'pi pi-discord'
+    },
+    {
+        href: 'https://www.tiktok.com',
+        icon: 'pi pi-tiktok'
+    },
+    {
+        href: 'https://www.youtube.com',
+        icon: 'pi pi-youtube'
+    },
+    {
+        href: 'https://x.com',
+        icon: 'pi pi-twitter'
+    },
+]
+---
+<header class="md:py-10 py-5">
+    <div class="flex items-center justify-between max-w-7xl mx-auto px-5">
+        <a href="/">
+            <Image src="/images/logo-white.svg" alt="Logo" width={115} height={28}/>
+        </a>
+        <nav class="justify-end items-center gap-8 hidden md:flex">
+            <ul class="flex justify-end items-center gap-8">
+                {
+                    navLinks.map((link) => (
+                            <li>
+                                <NavLink href={link.href}>
+                                    {link.label}
+                                </NavLink>
+                            </li>
+                    ))
+                }
+            </ul>
+
+            <ul class="flex justify-end items-center gap-2">
+                {
+                    socialLinks.map((link) => (
+                            <li>
+                                <SocialLink {...link}/>
+                            </li>
+                    ))
+                }
+            </ul>
+        </nav>
+
+        <Sidebar client:load>
+            <ul class="grid gap-2">
+                {
+                    navLinks.map((link) => (
+                            <li>
+                                <NavLink href={link.href}>
+                                    {link.label}
+                                </NavLink>
+                            </li>
+                    ))
+                }
+            </ul>
+
+            <ul class="flex justify-start gap-2 flex-wrap mt-4">
+                {
+                    socialLinks.map((link) => (
+                            <li>
+                                <SocialLink {...link}/>
+                            </li>
+                    ))
+                }
+            </ul>
+        </Sidebar>
+    </div>
+</header>
