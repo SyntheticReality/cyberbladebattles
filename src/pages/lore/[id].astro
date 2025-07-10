@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro"
 import {Container, Sidebar} from "@/components/lore";
 import {getCollection, render} from 'astro:content';
-import {cn} from "@/lib/utils";
+import {cn, normalizePath} from "@/lib/utils";
 export async function getStaticPaths() {
     const lore = await getCollection('lore');
     return lore.map(loreItem => ({
@@ -24,7 +24,7 @@ const getLoreItems = async (category: string) => {
     return loreItems.map(item => ({
         title: item.data.title,
         slug: item.id,
-        isActive: pathname === `/lore/${item.id}`,
+        isActive: normalizePath(pathname) === normalizePath(`/lore/${item.id}`),
     }));
 };
 
