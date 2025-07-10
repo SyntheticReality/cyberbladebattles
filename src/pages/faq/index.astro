@@ -1,17 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import Accordion from "@/components/Accordion.vue"
+import { getCollection } from 'astro:content';
 
-const data = [
-    {
-        title: 'Can i do X?',
-        content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consectetur labore numquam officia quibusdam reprehenderit sed tenetur. Adipisci atque aut esse maiores non placeat quibusdam recusandae soluta sunt suscipit! Aliquam aperiam consectetur consequatur, dicta doloremque ea eius explicabo facilis laboriosam minima nemo non, possimus quod ratione tenetur velit veniam. Illum?'
-    }
-]
-
-for (let i = 0; i < 10; i++) {
-    data.push(data[0])
-}
+const faq = (await getCollection('faq')).sort(
+    (a, b) => a.data.order - b.data.order
+);
 ---
 <Layout title="FAQ">
     <section class="py-12 lg:py-16">
@@ -27,7 +21,7 @@ for (let i = 0; i < 10; i++) {
             </div>
 
             <div>
-                <Accordion data={data} client:load/>
+                <Accordion faq={faq} client:load/>
             </div>
         </div>
     </section>

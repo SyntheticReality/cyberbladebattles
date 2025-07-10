@@ -1,33 +1,32 @@
 <script lang="ts" setup>
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from '@/components/ui/accordion'
 import TriangleIcon from '@/components/TriangleIcon.vue'
+import type {CollectionEntry} from "astro:content";
 
 interface Props {
-  data: {
-    title: string,
-    content: string,
-  }[]
+  faq: CollectionEntry<'faq'>[]
 }
 
 const props = defineProps<Props>()
 </script>
 
 <template>
+
   <Accordion class="gap-4 grid xl:gap-6" collapsible type="single">
     <AccordionItem
-        v-for="(item, index) in props.data"
+        v-for="(item, index) in props.faq"
         :key="index"
-        :value="index.toString()"
+        :value="item.id"
         class="bg-white text-black"
     >
       <AccordionTrigger class="px-5 cursor-pointer text-xl xl:text-2xl items-center">
-        {{ item.title }}
+        {{ item.data.question }}
         <template #icon>
           <TriangleIcon/>
         </template>
       </AccordionTrigger>
       <AccordionContent class="px-5 md:text-base xl:text-lg">
-        {{ item.content }}
+        <div class="[&>ul]:list-disc [&>ul]:list-inside space-y-3 [&>ul]:space-y-1" v-html="item.rendered?.html" />
       </AccordionContent>
     </AccordionItem>
   </Accordion>

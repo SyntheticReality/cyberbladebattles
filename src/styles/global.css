@@ -2,6 +2,8 @@
 @import "tw-animate-css";
 @import "primeicons/primeicons.css";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
@@ -159,5 +161,10 @@
 
     body {
         @apply bg-background text-white;
+    }
+
+    .scrollbar-thing {
+        scrollbar-color: black white;
+        scrollbar-width: thin;
     }
 }

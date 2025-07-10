@@ -1,0 +1,26 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { getCollection, getEntry } from 'astro:content';
+
+interface Props {
+    entryId: string;
+}
+
+const { entryId } = Astro.props;
+
+const legal = await getEntry('legals', entryId);
+---
+<Layout title={legal?.data.title}>
+    <section class="py-12 lg:py-16">
+        <div class="max-w-4xl mx-auto px-5 space-y-8 lg:space-y-12">
+            <div class="text-center space-y-1">
+                <h1 class="text-3xl md:text-4xl lg:text-6xl xl:text-7xl">
+                    {legal?.data.title}
+                </h1>
+            </div>
+
+            <div class="prose max-w-none prose-invert" set:html={legal?.rendered?.html} />
+
+        </div>
+    </section>
+</Layout>

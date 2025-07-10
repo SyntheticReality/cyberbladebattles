@@ -14,7 +14,8 @@ const pathname = Astro.url.pathname;
 <a
         href={href}
         class={cn('text-gray-400 text-xl',
-            pathname === href && activeClass
+            pathname === href && activeClass,
+            pathname.includes('/lore') && href.includes('/lore') && activeClass
         )}
 >
     <slot/>

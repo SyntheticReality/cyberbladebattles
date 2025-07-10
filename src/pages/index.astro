@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro"
-import {Button} from "../components/ui/button";
+import HeroButton from '@/components/HeroButton.vue'
 import {cn} from "@/lib/utils";
 
 const data = [
@@ -24,21 +24,16 @@ const data = [
 <Layout title="Home">
     <section class="pb-12 lg:pb-16">
         <div>
-            <img class="mx-auto" src="/images/hero-bg.webp" alt="Hero background">
+            <img class="mx-auto" src="/images/hero-bg-alt.webp" alt="Hero background">
         </div>
 
-        <div class="px-5 mt-4 space-y-8 lg:mt-12 lg:space-y-10">
+        <div class="px-5 mt-4 space-y-8 lg:mt-16 lg:space-y-10">
             <h1 class="text-center text-2xl md:text-3xl lg:text-4xl">
                 ※ Fast, brutal, cyberpunk VR warfare ※
             </h1>
 
             <div class="flex justify-center">
-                <Button variant="hero" class="md:h-20 h-16 md:text-3xl text-xl md:px-12 px-10 cursor-pointer">
-                    <div class="flex flex-col gap-1 justify-center items-center">
-                        Free to play
-                        <img class="max-w-24" src="/images/meta-quest.webp" alt="Meta Quest Logo">
-                    </div>
-                </Button>
+                <HeroButton/>
             </div>
         </div>
     </section>
@@ -69,7 +64,7 @@ const data = [
                                             )
                                         }
                                 >
-                                    <img src={item.image} alt={item.title}/>
+                                    <img class="md:max-w-sm max-w-2xs w-full" src={item.image} alt={item.title}/>
                                 </div>
 
                                 <div class="space-y-4 xl:space-y-8">
