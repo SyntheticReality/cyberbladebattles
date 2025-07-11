@@ -1,13 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro"
 import Accordion from "@/components/Accordion.vue"
-import { getCollection } from 'astro:content';
+import {getCollection} from 'astro:content';
 
 const faq = (await getCollection('faq')).sort(
     (a, b) => a.data.order - b.data.order
 );
 ---
-<Layout title="FAQ">
+<Layout title="FAQ | Cyberblade Battles">
     <section class="py-12 lg:py-16">
         <div class="max-w-4xl mx-auto px-5 space-y-8 lg:space-y-12">
             <div class="text-center space-y-1">

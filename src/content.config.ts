@@ -1,15 +1,15 @@
-import { defineCollection, z } from 'astro:content';
-import { glob, file } from 'astro/loaders';
+import {defineCollection, z} from 'astro:content';
+import {glob} from 'astro/loaders';
 
 const faq = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/data/faq" }),
+    loader: glob({pattern: "**/*.md", base: "./src/data/faq"}),
     schema: z.object({
         order: z.number(),
         question: z.string(),
     })
 });
 const lore = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/data/lore" }),
+    loader: glob({pattern: "**/*.md", base: "./src/data/lore"}),
     schema: z.object({
         order: z.number().optional(),
         title: z.string(),
@@ -18,10 +18,10 @@ const lore = defineCollection({
 });
 
 const legals = defineCollection({
-    loader: glob({ pattern: "**/*.md", base: "./src/data/legals" }),
+    loader: glob({pattern: "**/*.md", base: "./src/data/legals"}),
     schema: z.object({
         title: z.string(),
     })
 });
 
-export const collections = { faq, lore, legals };
+export const collections = {faq, lore, legals};

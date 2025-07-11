@@ -21,7 +21,7 @@ const data = [
     },
 ]
 ---
-<Layout title="Home">
+<Layout title="Cyberblade Battles - Official Site">
     <section class="pb-12 lg:pb-16">
         <div>
             <img class="mx-auto" src="/images/hero-bg-alt.webp" alt="Hero background">
@@ -51,10 +51,10 @@ const data = [
 
     <section class="py-12 lg:py-16">
         <div class="max-w-7xl mx-auto px-5">
-            <div class="space-y-8 md:space-y-16 xl:space-y-20">
+            <div class="space-y-16 xl:space-y-20">
                 {
                     data.map((item, index) => (
-                            <div class="md:even:flex-row-reverse flex justify-start flex-col md:flex-row items-center w-full gap-12 lg:gap-16 text-start even:text-end group">
+                            <div class="md:even:flex-row-reverse flex justify-start flex-col md:flex-row items-center w-full md:gap-12 gap-6 lg:gap-16 md:text-start md:even:text-end group text-center">
                                 <div
                                         class={
                                             cn('max-w-[300px] xl:max-w-full',
@@ -85,7 +85,7 @@ const data = [
 
     <section class="pt-12 pb-24 lg:pt-16 lg:pb-32">
         <div class="max-w-7xl mx-auto px-5">
-            <p class="text-center text-2xl md:text-3xl lg:text-4xl">※ Free‑to‑Play, Skill‑to‑Win ※</p>
+            <p class="text-center sm:text-2xl text-xl md:text-3xl lg:text-4xl">※ Free‑to‑Play, Skill‑to‑Win ※</p>
         </div>
     </section>
 </Layout>
